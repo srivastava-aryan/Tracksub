@@ -7,6 +7,7 @@ import Tags from "./pages/Tags";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Settings from "./pages/Settings";
 import { useAuth } from "./context/AuthContext";
 import { Navigate } from "react-router-dom";
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/add" element={<AddSubscription />} />
         <Route path="/tags" element={<Tags />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<h1 className="p-6 text-red-500">404: Page not found</h1>} />
       </Routes>
     </Router>

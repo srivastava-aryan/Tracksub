@@ -29,7 +29,7 @@ export default function Login() {
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-white">
           Log In
         </h2>
-        {error && <p className="text-red-500 mb-4">{error}</p>}
+        {error && <p className="text-cyan-500 mb-4">{error}</p>}
         <input
           type="email"
           placeholder="Email"
