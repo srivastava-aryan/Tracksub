@@ -11,7 +11,7 @@ const subscriptionSchema = new mongoose.Schema({
   },
   price: Number,
   billingCycle: String,
-  category: String,
+  tag: String,
   notes: String,
   nextBillingDate: Date,
   createdAt: {

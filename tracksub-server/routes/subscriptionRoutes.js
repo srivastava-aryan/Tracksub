@@ -14,8 +14,11 @@ router.get("/:uid", async (req, res) => {
 
 // POST a new subscription
 router.post("/", async (req, res) => {
+  // console.log("Received POST request with body:", req.body);
   try {
+    console.log("Request body:", req.body);
     const newSub = new Subscription(req.body);
+    // console.log("Creating new subscription:", newSub);
     const saved = await newSub.save();
     res.status(201).json(saved);
   } catch (err) {
