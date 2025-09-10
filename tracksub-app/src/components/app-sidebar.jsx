@@ -2,6 +2,7 @@ import * as React from "react"
 import {
   ArrowUpCircleIcon,
   BarChartIcon,
+  BellDotIcon,
   CameraIcon,
   ClipboardListIcon,
   DatabaseIcon,
@@ -46,9 +47,9 @@ const AppData = ({ user }) => ({
       icon: HomeIcon,
     },
     {
-      title: "Lifecycle",
+      title: "Reminders",
       url: "#",
-      icon: ListIcon,
+      icon: BellDotIcon,
     },
     {
       title: "Analytics",

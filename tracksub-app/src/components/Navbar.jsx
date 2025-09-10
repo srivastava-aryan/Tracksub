@@ -1,22 +1,12 @@
-import { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
 
 const Navbar = () => {
-
-  const [dark, setDark] = useState(true);
+  const { dark, toggleDark } = useTheme();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-
-  useEffect(() => {
-    const html = document.documentElement;
-    if (dark) {
-      html.classList.add("dark");
-    } else {
-      html.classList.remove("dark");
-    }
-  }, [dark]);
 
   const handleLogout = async () => {
     try {
@@ -29,7 +19,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-background text-foreground shadow-md px-6 py-4 flex justify-between items-center sticky top-0 z-50">
-      <h1 className="text-2xl font-bold">SubTrack.</h1>
+      <h1 className="text-2xl font-bold">TrackSub.</h1>
       <div className="space-x-6 flex items-center">
         <Link
           to="/"
@@ -45,13 +35,13 @@ const Navbar = () => {
             >
               Dashboard
             </Link>
-            <Link
+            {/* <Link
               to="/add"
               className={`px-3 py-1 rounded transition-colors ${location.pathname === "/add" ? "bg-white text-black" : "hover:text-blue-600 dark:hover:text-blue-400"}`}
             >
               Add
-            </Link>
-            <Link
+            </Link> */}
+            {/* <Link
               to="/tags"
               className={`px-3 py-1 rounded transition-colors ${location.pathname === "/tags" ? "bg-white text-black" : "hover:text-blue-600 dark:hover:text-blue-400"}`}
             >
@@ -62,7 +52,7 @@ const Navbar = () => {
               className={`px-3 py-1 rounded transition-colors ${location.pathname === "/profile" ? "bg-white text-black" : "hover:text-blue-600 dark:hover:text-blue-400"}`}
             >
               Profile
-            </Link>
+            </Link> */}
           </>
         )}
         {!user ? (
@@ -89,7 +79,7 @@ const Navbar = () => {
           </button>
         )}
         <button
-          onClick={() => setDark(!dark)}
+          onClick={toggleDark}
           className="bg-muted text-muted-foreground text-sm px-3 py-1 rounded hover:bg-accent hover:text-accent-foreground transition-colors"
         >
           {dark ? "☀️ Light" : "🌙 Dark"}

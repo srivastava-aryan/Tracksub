@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [Fname, setFname] = useState("");
   const { signup } = useAuth();
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -13,7 +14,7 @@ export default function Signup() {
     e.preventDefault();
     setError("");
     try {
-      await signup(email, password);
+      await signup(email, password, Fname);
       navigate("/dashboard");
     } catch (err) {
       setError(err.message);
@@ -31,9 +32,17 @@ export default function Signup() {
         </h2>
         {error && <p className="text-red-500 mb-4">{error}</p>}
         <input
+          type="text"
+          placeholder="Full Name"
+          className="w-full mb-4 p-2 rounded border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+          value={Fname}
+          onChange={(e) => setFname(e.target.value)}
+          required
+        />
+        <input
           type="email"
           placeholder="Email"
-          className="w-full mb-4 p-2 rounded border dark:bg-gray-700 dark:text-white"
+          className="w-full mb-4 p-2 rounded border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -41,7 +50,7 @@ export default function Signup() {
         <input
           type="password"
           placeholder="Password"
-          className="w-full mb-6 p-2 rounded border dark:bg-gray-700 dark:text-white"
+          className="w-full mb-6 p-2 rounded border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required

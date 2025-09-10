@@ -17,9 +17,9 @@ const Home = () => {
 
   return (
   <div className="min-h-screen flex flex-col items-center justify-center px-6 text-center bg-background text-foreground transition-colors">
-      <h1 className="text-5xl font-bold mb-5">Welcome to SubTrack.</h1>
+      <h1 className="text-5xl font-bold mb-5">Welcome to TrackSub.</h1>
   <p className="text-lg max-w-2xl text-muted-foreground mb-6 ">
-        SubTrack is your personal subscription manager that helps you keep track
+        TrackSub is your personal subscription manager that helps you keep track
         of all your recurring expenses in one place. Easily add your subscriptions,
         categorize them with tags, filter by services, and calculate your total
         monthly spending. Stay organized and never lose track of where your money goes!

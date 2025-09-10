@@ -14,6 +14,7 @@ export const SubscriptionProvider = ({ children }) => {
     if (!user) return;
     try {
       const res = await axios.get(`/subscriptions/${user.uid}`);
+      console.log("Fetched subscriptions:", res.data);
       setSubscriptions(res.data);
     } catch (err) {
       console.error("Fetch error:", err);
@@ -21,8 +22,10 @@ export const SubscriptionProvider = ({ children }) => {
   };
 
   const addSubscription = async (sub) => {
+    if (!user) return;
     try {
-      const res = await axios.post("/subscriptions", sub);
+      const res = await axios.post(`/subscriptions/${user.uid}`, sub);
+      console.log("Created subscription:", res.data);
       setSubscriptions((prev) => [...prev, res.data]);
       console.log("Submitting this data:", sub);
     } catch (err) {
