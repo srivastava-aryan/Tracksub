@@ -77,14 +77,14 @@ export default function Login() {
         <div className="flex-1 p-10 flex flex-col justify-center dark:bg-gray-800">
           <div className="mb-8">
             <div className="font-bold text-xs text-violet-600 mb-2">TrackSub.</div>
-            <h2 className="text-3xl font-bold mb-2">Hey, <br />Welcome Back</h2>
-            <p className="text-gray-600 dark:text-gray-400">Log in to manage your subscriptions</p>
+            <h2 className="text-3xl font-bold mb-2 text-black">Hey, <br />Welcome Back</h2>
+            <p className="text-black">Log in to manage your subscriptions</p>
             {error && <p className="text-red-500 dark:text-red-400 mb-4">{error}</p>}
           </div>
           <form onSubmit={handleLogin}>
             <div className="mb-4">
               <input
-                className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-violet-400"
+                className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-violet-400 text-gray-800"
                 type="email"
                 placeholder="example@gmail.com"
                 value={email}
@@ -95,7 +95,7 @@ export default function Login() {
             </div>
             <div className="mb-4">
               <input
-                className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-violet-400"
+                className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-violet-400 text-gray-800"
                 type="password"
                 placeholder="Password"
                 value={password}

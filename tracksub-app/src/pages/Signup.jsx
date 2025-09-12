@@ -29,11 +29,11 @@ export default function Signup() {
             <div className="font-bold text-xs text-violet-600 mb-2">
               TrackSub.
             </div>
-            <h2 className="text-3xl font-bold mb-2">
+            <h2 className="text-3xl font-bold mb-2 text-black">
               Hey, <br />
               Welcome Back
             </h2>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-black">
               Log in to manage your subscriptions
             </p>
             {error && (
@@ -46,7 +46,7 @@ export default function Signup() {
               <input
                 type="text"
                 placeholder="Full Name"
-                className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-violet-400"
+                className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-violet-400 text-black"
                 value={Fname}
                 onChange={(e) => setFname(e.target.value)}
                 required
@@ -54,7 +54,7 @@ export default function Signup() {
             </div>
             <div className="mb-4">
               <input
-                className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-violet-400"
+                className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-violet-400 text-black"
                 type="email"
                 placeholder="example@gmail.com"
                 value={email}
@@ -65,7 +65,7 @@ export default function Signup() {
             </div>
             <div className="mb-4">
               <input
-                className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-violet-400"
+                className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-violet-400 text-black"
                 type="password"
                 placeholder="Password"
                 value={password}
