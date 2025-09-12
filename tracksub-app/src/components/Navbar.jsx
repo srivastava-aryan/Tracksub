@@ -16,6 +16,7 @@ const Navbar = () => {
       console.error("Logout failed", err);
     }
   };
+  
 
   return (
     <nav className="bg-background text-foreground shadow-md px-6 py-4 flex justify-between items-center sticky top-0 z-50">
@@ -88,5 +89,4 @@ const Navbar = () => {
     </nav>
   );
 };
-
 export default Navbar;
