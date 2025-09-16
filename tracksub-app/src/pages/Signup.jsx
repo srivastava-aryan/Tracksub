@@ -14,7 +14,7 @@ export default function Signup() {
     e.preventDefault();
     setError("");
     try {
-      await signup(email, password, Fname);
+      await signup(email, password, userName);
       navigate("/dashboard");
     } catch (err) {
       setError(err.message);
@@ -47,7 +47,7 @@ export default function Signup() {
                 type="text"
                 placeholder="Full Name"
                 className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-violet-400 text-black"
-                value={Fname}
+                value={userName}
                 onChange={(e) => setFname(e.target.value)}
                 required
               />
