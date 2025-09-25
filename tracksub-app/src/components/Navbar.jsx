@@ -1,6 +1,7 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
+import { toast } from "sonner";
 
 const Navbar = () => {
   const { dark, toggleDark } = useTheme();
@@ -73,7 +74,12 @@ const Navbar = () => {
           </>
         ) : (
           <button
-            onClick={handleLogout}
+            onClick={() => {
+              handleLogout();
+              toast.success("Logged out successfully", {
+                description: "You have been logged out."
+              });
+            }}
             className="bg-sky-600 text-white text-sm px-3 py-1 rounded hover:bg-sky-700"
           >
             Logout

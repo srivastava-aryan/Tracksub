@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Settings from "./pages/Settings";
 import { useAuth } from "./context/AuthContext";
 import { Navigate } from "react-router-dom";
+import { Toaster } from "./components/ui/sonner";
 
 function App() {
   const { user } = useAuth();
@@ -27,6 +28,7 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<h1 className="p-6 text-red-500">404: Page not found</h1>} />
       </Routes>
+      <Toaster />
     </Router>
   );
 }

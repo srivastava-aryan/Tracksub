@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import {toast} from "sonner";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -15,8 +16,14 @@ export default function Signup() {
     setError("");
     try {
       await signup(email, password, Fname);
+      toast.success("Signup successful!", {
+        description: "Welcome aboard! Redirecting to dashboard..."
+      });
       navigate("/dashboard");
     } catch (err) {
+      toast.error("Signup failed", {
+        description: err.message
+      });
       setError(err.message);
     }
   };
