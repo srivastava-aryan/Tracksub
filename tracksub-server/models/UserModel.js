@@ -16,7 +16,7 @@ const subscriptionSchema = new mongoose.Schema({
 
 const userSchema = new mongoose.Schema({
   uid: { type: String, required: true },
-  name: { type: String, required: true },
+  Fname: { type: String, required: true },
   subscriptions: [subscriptionSchema],
 });
 
