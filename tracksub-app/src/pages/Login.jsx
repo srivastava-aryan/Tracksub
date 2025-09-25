@@ -129,6 +129,7 @@ export default function Login() {
           <img 
             src="/login.jpg" 
             alt="Login illustration" 
+            loading="lazy"
             className="w-full h-full object-cover dark:opacity-90 transition-opacity" 
           />
         </div>
