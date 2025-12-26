@@ -97,6 +97,8 @@ const Navbar = () => {
           {dark ? "☀️ Light" : "🌙 Dark"}
         </button>
       </div>
+      {/* Add closing tag for the flex container */}
+    </div>
     </nav>
   );
 };

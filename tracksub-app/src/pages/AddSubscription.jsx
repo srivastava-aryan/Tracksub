@@ -20,8 +20,9 @@ const AddSubscription = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!user) return alert("User not logged in");
-    // console.log("User ID:", user.uid);
-    addSubscription({ ...form, uid: user.uid });
+    console.log("User ID:", user.uid);
+    // Don't include uid in the subscription data
+    addSubscription(form);
     navigate("/dashboard");
   };
 

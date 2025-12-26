@@ -1,9 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-// const cron = require("node-cron");
-// require("./smsCron.js");
-
 require("dotenv").config();
 
 const app = express();
@@ -28,7 +25,3 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`🔌 Server running on http://localhost:${PORT}`);
 });
-
-// cron.schedule("* * * * *", () => {
-//   console.log("Cron job running each minute...");
-// });

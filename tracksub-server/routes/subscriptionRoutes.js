@@ -5,8 +5,8 @@ const UserModel = require("../models/UserModel");
 // GET all subscriptions for a user
 router.get("/:uid", async (req, res) => {
   try {
-    const user = await UserModel.findOne({ uid: req.params.uid });
-    res.json(user ? user.subscriptions : []);
+    const subs = await UserModel.find({ uid: req.params.uid });
+    res.json(subs.length ? subs[0].subscriptions : []);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -18,40 +18,28 @@ router.post("/:uid", async (req, res) => {
     const data = req.body;
     const uid = req.params.uid;
 
-    console.log("Received data:", data);
-    console.log("User ID:", uid);
-
     if (!data.name || !data.price || !data.nextBillingDate) {
       return res
         .status(400)
         .json({ message: "Name, price, and nextBillingDate are required" });
     }
 
-    // Remove uid from subscription data if it exists
-    const { uid: _, ...subscriptionData } = data;
+    const nextBillingDate = new Date(data.nextBillingDate);
+    nextBillingDate.setMonth(nextBillingDate.getMonth() + 1);
+    data.nextBillingDate = nextBillingDate;
 
-    let user = await UserModel.findOne({ uid });
-
+    const user = await UserModel.findOne({ uid });
     if (!user) {
-      // Create new user document
-      const newUser = new UserModel({ uid, subscriptions: [subscriptionData] });
+      const newUser = new UserModel({ uid, subscriptions: [data] });
       await newUser.save();
-      // Return only the first subscription (the new one)
-      return res.status(201).json(newUser.subscriptions[0]);
+      return res.status(201).json(newUser);
     }
-
-    // Push the new subscription and get updated document
-    const updatedUser = await UserModel.findOneAndUpdate(
+    const newSub = await UserModel.updateOne(
       { uid },
-      { $push: { subscriptions: subscriptionData } },
-      { new: true }
+      { $push: { subscriptions: data } }
     );
-
-    // Return ONLY the last added subscription (the new one)
-    const newSubscription = updatedUser.subscriptions[updatedUser.subscriptions.length - 1];
-    res.status(201).json(newSubscription);
+    res.status(201).json(newSub);
   } catch (error) {
-    console.error("POST subscription error:", error);
     res.status(500).json({ error: error.message });
   }
 });
@@ -59,17 +47,9 @@ router.post("/:uid", async (req, res) => {
 // DELETE a subscription
 router.delete("/:id", async (req, res) => {
   try {
-    const subId = req.params.id;
-
-    // Remove the subscription from the subscriptions array
-    await UserModel.updateOne(
-      { "subscriptions._id": subId },
-      { $pull: { subscriptions: { _id: subId } } }
-    );
-
+    await UserModel.findByIdAndDelete(req.params.id);
     res.status(204).end();
   } catch (err) {
-    console.error("DELETE subscription error:", err);
     res.status(500).json({ error: err.message });
   }
 });
