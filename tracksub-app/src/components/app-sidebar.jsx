@@ -48,7 +48,7 @@ const AppData = ({ user }) => ({
     },
     {
       title: "Reminders",
-      url: "#",
+      url: "/reminders",
       icon: BellDotIcon,
     },
     {

@@ -8,6 +8,7 @@ import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Settings from "./pages/Settings";
+import Reminders from "./pages/Reminders.jsx";
 import { useAuth } from "./context/AuthContext";
 import { Navigate } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
@@ -26,6 +27,7 @@ function App() {
         <Route path="/tags" element={<Tags />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/reminders" element={<Reminders />} /> 
         <Route path="*" element={<h1 className="p-6 text-red-500">404: Page not found</h1>} />
       </Routes>
       <Toaster />
