@@ -21,11 +21,10 @@ export function SectionCards() {
 
   // Calculate upcoming renewals (next 7 days)
   const upcomingRenewals = subscriptions.filter(sub => {
-    const renewalDate = new Date(sub.nextBillingDate); // Changed from renewalDate to nextBillingDate
-    const today = new Date();
+    const renewalDate = new Date(sub.renewalDate);
     const sevenDaysFromNow = new Date();
-    sevenDaysFromNow.setDate(today.getDate() + 7);
-    return renewalDate >= today && renewalDate <= sevenDaysFromNow;
+    sevenDaysFromNow.setDate(sevenDaysFromNow.getDate() + 7);
+    return renewalDate <= sevenDaysFromNow;
   });
 
   return (
