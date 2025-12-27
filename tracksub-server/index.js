@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 // const cron = require("node-cron");
 // require("./smsCron.js");
+// const subscriptionRoutes = require("./routes/subscriptionRoutes");
+const reminderRoutes = require("./routes/reminderRoutes");
 
 require("dotenv").config();
 
@@ -24,6 +26,8 @@ mongoose.connect(process.env.MONGO_URI)
 app.get("/", (req, res) => {
   res.send("SubTrack backend is live 🚀");
 });
+app.use("/api/subscriptions", subscriptionRoutes);
+app.use("/api/reminders", reminderRoutes);
 
 app.listen(PORT, () => {
   console.log(`🔌 Server running on http://localhost:${PORT}`);
