@@ -221,7 +221,7 @@ Create a `.env` file in the `tracksub-server/` directory:
 
 ```env
 PORT=5000
-MONGO_URI=mongodb://localhost:27017/tracksub
+MONGO_URI=YOUR_MONGO_DB_URI
 # Or use MongoDB Atlas:
 # MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/tracksub
 
